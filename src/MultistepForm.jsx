@@ -262,24 +262,24 @@ const MultistepForm = () => {
             console.log(responseData,"response data")
             const response = await fetch(inputPdfPath);
             const pdfBytes = await response.arrayBuffer();
-            // const fieldData = extractedJSONFields.map(field => {
-            //     const value = responseData.find(obj => obj.hasOwnProperty(field.name));
-            //     return {
-            //         ...field,
-            //         value: value ? value[field.name] : ""
-            //     };
-            // });
+            const fieldData = extractedJSONFields.map(field => {
+                const value = responseData.find(obj => obj.hasOwnProperty(field.name));
+                return {
+                    ...field,
+                    value: value ? value[field.name] : ""
+                };
+            });
 
-            const fieldData = [
-                { name: 'ApplicantName', value: 'John Doe' },
-                { name: 'FatherName', value: 'Robert Doe' },
-            ]
+            // const fieldData = [
+            //     { name: 'ApplicantName', value: 'John Doe' },
+            //     { name: 'FatherName', value: 'Robert Doe' },
+            // ]
 
             try {
                 const filledPdfBytes = await fillPdfFields(pdfBytes, fieldData);
                 const blob = new Blob([filledPdfBytes], { type: "application/pdf" });
                 setOutputPdf(URL.createObjectURL(blob));
-                window.open(URL.createObjectURL(blob))
+                // window.open(URL.createObjectURL(blob))
                 console.log('try part')
             } catch (error) {
                 console.error("Error filling PDF fields:", error);
