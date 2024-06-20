@@ -262,18 +262,29 @@ const MultistepForm = () => {
             console.log(responseData,"response data")
             const response = await fetch(inputPdfPath);
             const pdfBytes = await response.arrayBuffer();
+            // const fieldData = extractedJSONFields.map(field => {
+            //     const value = responseData.find(obj => obj.hasOwnProperty(field.name));
+            //     return {
+            //         ...field,
+            //         value: value ? value[field.name] : ""
+            //     };
+            // });
+
+            const responseDataMap = responseData.reduce((acc, obj) => {
+                Object.keys(obj).forEach(key => {
+                    acc[key] = obj[key];
+                });
+                return acc;
+            }, {});
+        
+            // Mapping extracted fields to response data
             const fieldData = extractedJSONFields.map(field => {
-                const value = responseData.find(obj => obj.hasOwnProperty(field.name));
+                const value = responseDataMap[field.name] !== undefined ? responseDataMap[field.name] : "";
                 return {
                     ...field,
-                    value: value ? value[field.name] : ""
+                    value: value
                 };
             });
-
-            // const fieldData = [
-            //     { name: 'ApplicantName', value: 'John Doe' },
-            //     { name: 'FatherName', value: 'Robert Doe' },
-            // ]
 
             try {
                 const filledPdfBytes = await fillPdfFields(pdfBytes, fieldData);
@@ -301,7 +312,7 @@ const MultistepForm = () => {
                 try {
                     switch (field.constructor.name) {
                         case "PDFTextField":
-                            field.setText("Test");
+                            field.setText(data.value);
                             break;
                         case "PDFCheckBox":
                             if (data.value === true) {
@@ -327,6 +338,9 @@ const MultistepForm = () => {
                     );
                 }
             }
+            else {
+                console.log(`Field ${data.name} not found in the form.`);
+            }
         });
 
         return pdfDoc.save();
@@ -346,7 +360,7 @@ const MultistepForm = () => {
 
         try {
             console.log(requiredParams)
-            await axios.post('https://digiformapi.adraproductstudio.com:3000/outbound_call', requiredParams)
+            await axios.post('https://digiformtelephony.adraproductstudio.com:3000/outbound_call', requiredParams)
                 .then((response) => {
                     if (response.data.error_code === 0) {
                         console.log(response,"call response")
@@ -377,7 +391,7 @@ const MultistepForm = () => {
         }
 
         try {
-            await axios.post('https://digiformapi.adraproductstudio.com:3000/complete_application', requiredParams)
+            await axios.post('https://digiformtelephony.adraproductstudio.com:3000/complete_application', requiredParams)
                 .then((response) => {
                     if (response.data.error_code === 0) {
                         console.log(response,"call disconnected")
