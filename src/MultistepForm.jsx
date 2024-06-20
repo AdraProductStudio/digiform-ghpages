@@ -269,14 +269,14 @@ const MultistepForm = () => {
             //         value: value ? value[field.name] : ""
             //     };
             // });
-
+            console.log(pdfBytes)
             const responseDataMap = responseData.reduce((acc, obj) => {
                 Object.keys(obj).forEach(key => {
                     acc[key] = obj[key];
                 });
                 return acc;
             }, {});
-        
+        console.log(responseDataMap, "responseDataMap");
             // Mapping extracted fields to response data
             const fieldData = extractedJSONFields.map(field => {
                 const value = responseDataMap[field.name] !== undefined ? responseDataMap[field.name] : "";
@@ -285,12 +285,12 @@ const MultistepForm = () => {
                     value: value
                 };
             });
-
+            console.log(fieldData,"fieldData")
             try {
                 const filledPdfBytes = await fillPdfFields(pdfBytes, fieldData);
                 const blob = new Blob([filledPdfBytes], { type: "application/pdf" });
                 setOutputPdf(URL.createObjectURL(blob));
-                // window.open(URL.createObjectURL(blob))
+                console.log(URL.createObjectURL(blob))
                 console.log('try part')
             } catch (error) {
                 console.error("Error filling PDF fields:", error);
@@ -305,7 +305,7 @@ const MultistepForm = () => {
     const fillPdfFields = async (pdfBytes, fieldData) => {
         const pdfDoc = await PDFDocument.load(pdfBytes);
         const form = pdfDoc.getForm();
-
+        console.log(form)
         fieldData.forEach((data) => {
             const field = form.getField(data.name);
             if (field) {
