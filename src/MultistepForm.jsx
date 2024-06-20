@@ -304,7 +304,8 @@ const MultistepForm = () => {
 
     // Fill now function
     const fillPdfFields = async (pdfBytes, fieldData) => {
-        const pdfDoc = await PDFDocument.load(pdfBytes);
+        const uint8Array = new Uint8Array(pdfBytes)
+        const pdfDoc = await PDFDocument.load(uint8Array);
         const form = pdfDoc.getForm();
         console.log(form)
         fieldData.forEach((data) => {
