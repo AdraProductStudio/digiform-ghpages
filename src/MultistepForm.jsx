@@ -287,7 +287,8 @@ const MultistepForm = () => {
             });
             console.log(fieldData,"fieldData")
             try {
-                const filledPdfBytes = await fillPdfFields(pdfBytes, fieldData);
+                const uint8Array = new Uint8Array(pdfBytes)
+                const filledPdfBytes = await fillPdfFields(uint8Array, fieldData);
                 const blob = new Blob([filledPdfBytes], { type: "application/pdf" });
                 setOutputPdf(URL.createObjectURL(blob));
                 console.log(URL.createObjectURL(blob))
@@ -308,6 +309,7 @@ const MultistepForm = () => {
         console.log(form)
         fieldData.forEach((data) => {
             const field = form.getField(data.name);
+            console.log(field)
             if (field) {
                 try {
                     switch (field.constructor.name) {
@@ -345,6 +347,56 @@ const MultistepForm = () => {
 
         return pdfDoc.save();
     };
+
+    // const fillPdfFields = async (pdfBytes, fieldData) => {
+    //     try {
+    //         // Load the existing PDF document
+    //         const pdfDoc = await PDFDocument.load(pdfBytes);
+    //         const form = pdfDoc.getForm();
+    
+    //         // Iterate over each field data and update the form fields
+    //         fieldData.forEach((data) => {
+    //             const field = form.getField(data.name);
+    //             if (field) {
+    //                 try {
+    //                     switch (field.constructor.name) {
+    //                         case "PDFTextField":
+    //                             field.setText(data.value);
+    //                             break;
+    //                         case "PDFCheckBox":
+    //                             if (data.value === true) {
+    //                                 field.check();
+    //                             } else {
+    //                                 field.uncheck();
+    //                             }
+    //                             break;
+    //                         case "PDFDropdown":
+    //                             field.select(data.value);
+    //                             break;
+    //                         case "PDFRadioGroup":
+    //                             field.select(data.value);
+    //                             break;
+    //                         default:
+    //                             console.log(`Unsupported field type: ${field.constructor.name}`);
+    //                             break;
+    //                     }
+    //                 } catch (error) {
+    //                     console.error(`Error setting field ${data.name} with value ${data.value}: ${error.message}`);
+    //                 }
+    //             } else {
+    //                 console.log(`Field ${data.name} not found in the form.`);
+    //             }
+    //         });
+    
+    //         // Save the updated PDF document
+    //         const modifiedPdfBytes = await pdfDoc.save();
+    //         return modifiedPdfBytes;
+    
+    //     } catch (error) {
+    //         console.error(`Error processing PDF: ${error.message}`);
+    //         throw error;
+    //     }
+    // };
 
 
 

@@ -1888,7 +1888,7 @@ const CardComponent = () => {
         },
     ]
     
-    console.log(setExtractedJSONFields,"extractedJsonFields")
+    console.log(extractedJSONFields,"extractedJsonFields")
 
     return (
         <>
