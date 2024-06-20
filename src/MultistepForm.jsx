@@ -313,6 +313,7 @@ const MultistepForm = () => {
                             break;
                         default:
                             console.log(`Unsupported field type: ${field.constructor.name}`);
+                            console.log(field,"field")
                             break;
                     }
                 } catch (error) {
