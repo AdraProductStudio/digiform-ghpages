@@ -262,13 +262,18 @@ const MultistepForm = () => {
             console.log(responseData,"response data")
             const response = await fetch(inputPdfPath);
             const pdfBytes = await response.arrayBuffer();
-            const fieldData = extractedJSONFields.map(field => {
-                const value = responseData.find(obj => obj.hasOwnProperty(field.name));
-                return {
-                    ...field,
-                    value: value ? value[field.name] : ""
-                };
-            });
+            // const fieldData = extractedJSONFields.map(field => {
+            //     const value = responseData.find(obj => obj.hasOwnProperty(field.name));
+            //     return {
+            //         ...field,
+            //         value: value ? value[field.name] : ""
+            //     };
+            // });
+
+            const fieldData = [
+                { name: 'ApplicantName', value: 'John Doe' },
+                { name: 'FatherName', value: 'Robert Doe' },
+            ]
 
             try {
                 const filledPdfBytes = await fillPdfFields(pdfBytes, fieldData);
