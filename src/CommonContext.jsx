@@ -323,7 +323,7 @@ export const DataProvider = ({children}) => {
         }
     ])
 
-    const [pdfFilePath,setPdfFilePath ] = useState('https://digiformcdn.adraproductstudio.com/KYC_ApplForm_fillable_final-1.pdf')
+    const [pdfFilePath,setPdfFilePath ] = useState(localStorage.getItem("currentPdf"))
     const [outputPdf, setOutputPdf] = useState(null);
 
 

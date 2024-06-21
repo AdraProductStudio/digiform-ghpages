@@ -171,128 +171,129 @@ const CardComponent = () => {
                     "type": "PDFTextField",
                     "name": "FatherName"
                     },
-                    // {
-                    // "type": "PDFRadioGroup",
-                    // "name": "Gender"
-                    // },
-                    // {
-                    // "type": "PDFRadioGroup",
-                    // "name": "MaritalStatus"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "Dob"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "Nationality"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "Pan"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "Aadhar"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "ProofOfIdentity"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "ResidenceAddress"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "ResidentCity"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "ResidentPincode"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "ResidentState"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "ResidentCountry"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "TelOffice"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "TelResidence"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "MobileNum"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "Fax"
-                    // },
+                    {
+                    "type": "PDFRadioGroup",
+                    "name": "Gender"
+                    },
+                    {
+                    "type": "PDFRadioGroup",
+                    "name": "MaritalStatus"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "Dob"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "Nationality"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "Pan"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "Aadhar"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "ProofOfIdentity"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "ResidenceAddress"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "ResidentCity"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "ResidentPincode"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "ResidentState"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "ResidentCountry"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "TelOffice"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "TelResidence"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "MobileNum"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "Fax"
+                    },
                     {
                     "type": "PDFTextField",
                     "name": "Email"
                     },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "ProofOfAddress"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "NonResident"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "PermanentCity"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "PermanentPinCode"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "PermanentState"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "PermanentCountry"
-                    // },
-                    // {
-                    // "type": "PDFSignature",
-                    // "name": "DeclarationSign",
-                    // "value": "Unsupported field type"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "DeclarationDate"
-                    // },
-                    // {
-                    // "type": "PDFCheckBox",
-                    // "name": "OfficeUseCheckBox",
-                    // "value": false
-                    // },
-                    // {
-                    // "type": "PDFSignature",
-                    // "name": "OfficeUseSign",
-                    // "value": "Unsupported field type"
-                    // },
-                    // {
-                    // "type": "PDFTextField",
-                    // "name": "OfficeUseDate"
-                    // },
-                    // {
-                    // "type": "PDFRadioGroup",
-                    // "name": "Status"
-                    // }
+                    {
+                    "type": "PDFTextField",
+                    "name": "ProofOfAddress"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "NonResident"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "PermanentCity"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "PermanentPinCode"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "PermanentState"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "PermanentCountry"
+                    },
+                    {
+                    "type": "PDFSignature",
+                    "name": "DeclarationSign",
+                    "value": "Unsupported field type"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "DeclarationDate"
+                    },
+                    {
+                    "type": "PDFCheckBox",
+                    "name": "OfficeUseCheckBox",
+                    "value": false
+                    },
+                    {
+                    "type": "PDFSignature",
+                    "name": "OfficeUseSign",
+                    "value": "Unsupported field type"
+                    },
+                    {
+                    "type": "PDFTextField",
+                    "name": "OfficeUseDate"
+                    },
+                    {
+                    "type": "PDFRadioGroup",
+                    "name": "Status"
+                    }
                     ])
                 postTextFile(response.data,cardTitle,onClickParams1,onClickParams2)
                 setPdfFilePath("https://digiformcdn.adraproductstudio.com/KYC_ApplForm_fillable_final-1.pdf")
+                localStorage.setItem("currentPdf","https://digiformcdn.adraproductstudio.com/KYC_ApplForm_fillable_final-1.pdf")
             }else if(cardTitle === "KYC Form for Non-Individuals"){
                 onClickParams1 = [
                     {
@@ -563,6 +564,7 @@ const CardComponent = () => {
                     ])
                 postTextFile(response.data,cardTitle,onClickParams1,onClickParams2)
                 setPdfFilePath("https://digiformcdn.adraproductstudio.com/KYC_ApplForm_fillable_final-2.pdf")
+                localStorage.setItem("currentPdf","https://digiformcdn.adraproductstudio.com/KYC_ApplForm_fillable_final-2.pdf")
 
             }else{
                 onClickParams1 = [
@@ -1228,6 +1230,7 @@ const CardComponent = () => {
                     ])
                 postTextFile(response.data,cardTitle,onClickParams1,onClickParams2)
                 setPdfFilePath("https://digiformcdn.adraproductstudio.com/SBI_form.pdf")
+                localStorage.setItem("currentPdf","https://digiformcdn.adraproductstudio.com/SBI_form.pdf")
 
             }
             
@@ -1254,7 +1257,6 @@ const CardComponent = () => {
         }
         try {
 
-            console.log(params)
             const result = await axios.post('https://digiform.adraproductstudio.com/select_file', params, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -1279,7 +1281,8 @@ const CardComponent = () => {
             [
                 {
                 "type": "PDFTextField",
-                "name": "ApplicantName"
+                "name": "ApplicantName",
+                "value":"123456789123",
                 },
                 {
                 "type": "PDFTextField",
@@ -1307,7 +1310,8 @@ const CardComponent = () => {
                 },
                 {
                 "type": "PDFTextField",
-                "name": "Aadhar"
+                "name": "Aadhar",
+                
                 },
                 {
                 "type": "PDFTextField",
@@ -1888,7 +1892,6 @@ const CardComponent = () => {
         },
     ]
     
-    console.log(extractedJSONFields,"extractedJsonFields")
 
     return (
         <>
@@ -1919,6 +1922,7 @@ const CardComponent = () => {
 
                     </div>
                 </div>
+                
             </div>
         </>
     )
