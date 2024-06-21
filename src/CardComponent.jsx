@@ -293,7 +293,6 @@ const CardComponent = () => {
                     ])
                 postTextFile(response.data,cardTitle,onClickParams1,onClickParams2)
                 setPdfFilePath("https://digiformcdn.adraproductstudio.com/KYC_ApplForm_fillable_final-1.pdf")
-                localStorage.setItem("currentPdf","https://digiformcdn.adraproductstudio.com/KYC_ApplForm_fillable_final-1.pdf")
             }else if(cardTitle === "KYC Form for Non-Individuals"){
                 onClickParams1 = [
                     {
@@ -564,7 +563,6 @@ const CardComponent = () => {
                     ])
                 postTextFile(response.data,cardTitle,onClickParams1,onClickParams2)
                 setPdfFilePath("https://digiformcdn.adraproductstudio.com/KYC_ApplForm_fillable_final-2.pdf")
-                localStorage.setItem("currentPdf","https://digiformcdn.adraproductstudio.com/KYC_ApplForm_fillable_final-2.pdf")
 
             }else{
                 onClickParams1 = [
@@ -1230,7 +1228,6 @@ const CardComponent = () => {
                     ])
                 postTextFile(response.data,cardTitle,onClickParams1,onClickParams2)
                 setPdfFilePath("https://digiformcdn.adraproductstudio.com/SBI_form.pdf")
-                localStorage.setItem("currentPdf","https://digiformcdn.adraproductstudio.com/SBI_form.pdf")
 
             }
             
@@ -1257,6 +1254,7 @@ const CardComponent = () => {
         }
         try {
 
+            console.log(params)
             const result = await axios.post('https://digiform.adraproductstudio.com/select_file', params, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -1892,6 +1890,7 @@ const CardComponent = () => {
         },
     ]
     
+    console.log(setExtractedJSONFields,"extractedJsonFields")
 
     return (
         <>
@@ -1922,7 +1921,6 @@ const CardComponent = () => {
 
                     </div>
                 </div>
-                
             </div>
         </>
     )
