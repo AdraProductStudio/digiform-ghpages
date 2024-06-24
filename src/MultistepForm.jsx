@@ -202,11 +202,10 @@ const MultistepForm = () => {
             formData.append("pan", documentPan)
             formData.append("filename", "KYC_ApplForm_p.pdf")
             try {
-                console.log(documentAadhar, documentPan, "KYC_ApplForm_p.pdf")
                 await axios.post('https://digiform.adraproductstudio.com/update_pdf', formData)
                     .then((response) => {
                         if (response.data.error_code === 0) {
-                            console.log(response)
+                            console.log(response.data.data.combined_json)
                             setUploading(false)
                             setDocumentsUploaded(true)
                             setResponseData(response.data.data.combined_json)
@@ -249,7 +248,6 @@ const MultistepForm = () => {
 
             try {
 
-                console.log(afterCallConnectionResponseData, "after Call response")
                 const filledPdfBytes = await fillPdfFields(pdfBytes, fieldData);
                 const blob = new Blob([filledPdfBytes], { type: "application/pdf" });
                 setOutputPdf(URL.createObjectURL(blob));
@@ -261,13 +259,10 @@ const MultistepForm = () => {
         } else {
 
             const inputPdfPath = pdfFilePath;
-            console.log(inputPdfPath, "input pdf")
-            console.log(responseData, "response data")
             const response = await fetch(inputPdfPath);
             const pdfBytes = await response.arrayBuffer();
             const fieldData = extractedJSONFields.map(field => {
                 const value = responseData.find(obj => obj.hasOwnProperty(field.name));
-                console.log(value)
                 return {
                     ...field,
                     value: value ? value[field.name] : ""
@@ -281,7 +276,6 @@ const MultistepForm = () => {
                 setPdfFilePath(URL.createObjectURL(blob))
                 handleFilledPdfUpload(URL.createObjectURL(blob))
                 // window.open(URL.createObjectURL(blob))
-                console.log('try part')
             } catch (error) {
                 console.error("Error filling PDF fields:", error);
             }
@@ -292,8 +286,6 @@ const MultistepForm = () => {
     // Filled pdf upload
     const handleFilledPdfUpload = async (filledPdf) => {
 
-        console.log(filledPdf)
-
         const requiredParams = {
             pdf: filledPdf,
             filename: "pdf_filled.pdf"
@@ -303,7 +295,8 @@ const MultistepForm = () => {
             await axios.post('https://digiform.adraproductstudio.com/upload_filled_pdf', requiredParams)
                 .then((response) => {
                     if (response.data.error_code === 0) {
-                        console.log(response)
+                        toast.success(response.data.message)
+                        setPdfFilePath(`https://digiformcdn.adraproductstudio.com/${response.data.file_location}`)
                     } else {
                         toast.error(response.data.message)
                     }
@@ -316,6 +309,8 @@ const MultistepForm = () => {
 
     }
    
+
+
 
 
 
@@ -373,11 +368,9 @@ const handleCallNowClick = async (e) => {
     }
 
     try {
-        console.log(requiredParams)
         await axios.post('https://digiformtelephony.adraproductstudio.com:3000/outbound_call', requiredParams)
             .then((response) => {
                 if (response.data.error_code === 0) {
-                    console.log(response, "call response")
                     toast.success(response.data.message)
                     setCallNowClicked(false)
                     setClickHereOnceLoading(false)
@@ -408,7 +401,7 @@ const afterCallConnectionResponse = async () => {
         await axios.post('https://digiformtelephony.adraproductstudio.com:3000/complete_application', requiredParams)
             .then((response) => {
                 if (response.data.error_code === 0) {
-                    console.log(response, "call disconnected")
+                    console.log(response)
                     setAfterCallConnectionResponseData(response.data.data)
                     setIsCallDisconnected(true)
                     toast.success(response.data.message)
@@ -434,6 +427,8 @@ const afterCallConnectionResponse = async () => {
 }
 
 
+// console.log(pdfFilePath)
+
 
 return (
     <>
@@ -456,7 +451,7 @@ return (
 
                                                     </div>
                                                     <div>
-                                                        <button type="button" disabled={responseData.length === 0 ? "disabled" : ""} className="btn border border-brand-color btn-primary" data-bs-toggle="modal" data-bs-target="#pdfModal" onClick={handlePreviewClick} >
+                                                        <button type="button" disabled={responseData.length === 0 || clickHereOnceLoading ? "disabled" : ""} className="btn border border-brand-color btn-primary" data-bs-toggle="modal" data-bs-target="#pdfModal" onClick={handlePreviewClick} >
                                                             Preview
                                                         </button>
                                                     </div>
@@ -531,8 +526,9 @@ return (
                                     </div>
                                     <div className="step-container d-flex justify-content-between ">
                                         <div className="step-circle" onClick={() => displayStep(1)}>1</div>
-                                        <div className="step-circle" onClick={() => displayStep(2)}>2</div>
-                                        <div className="step-circle" onClick={() => displayStep(3)}>3</div>
+                                        <div className={`${documentAadhar === null || documentPan === null || documentsUploaded === false ? "step-circle pe-none" : "step-circle "}`} onClick={() => displayStep(2)}>2</div>
+                                        <div className={`${afterCallConnectionResponseData.length === 0 ? "step-circle pe-none " : "step-circle" }`} onClick={() => displayStep(3)}>3</div>
+                                        {/* <div className="step-circle" onClick={() => displayStep(3)}>3</div> */}
                                     </div>
                                     <hr />
                                 </div>
@@ -547,7 +543,7 @@ return (
                                                     <div className="container-fluid mt-4 mx-auto">
                                                         <div className="row mb-2">
                                                             <div className="col-lg-6 my-3">
-                                                                <div className={`card h-100 border-0 shadow rounded-3 py-3 cup ${documentsUploaded === true ? `pe-none disabled opacity-50` : ``}`} onClick={(e) => handleCardClick(e, "aadhaarCard")}>
+                                                                <div className={`card h-100 border-0 shadow rounded-3 py-3 cup ${documentsUploaded === true ? `pe-none disabled opacity-50` : ``} ${documentAadhar!== null ?  "pe-none " : " "}`} onClick={(e) => handleCardClick(e, "aadhaarCard")}>
                                                                     {
                                                                         documentAadhar === null ?
                                                                             <div className="card-body d-flex align-items-center"  >
@@ -556,7 +552,7 @@ return (
                                                                                 <input type="file" hidden id='aadhaarCard' name='aadhaarCard' onChange={(e) => handleAadhaarCardUpload(e)} />
                                                                             </div>
                                                                             :
-                                                                            <div className="card-body d-flex align-items-center "  >
+                                                                            <div className={`card-body d-flex align-items-center `} >
 
                                                                                 {
                                                                                     uploading ?
@@ -574,7 +570,7 @@ return (
                                                                 </div>
                                                             </div>
                                                             <div className="col-lg-6 my-3">
-                                                                <div className={`card h-100 border-0 shadow rounded-3 py-3 cup ${documentsUploaded ? `pe-none disabled opacity-50` : ``}`} onClick={(e) => handleCardClick(e, "panCard")}>
+                                                                <div className={`card h-100 border-0 shadow rounded-3 py-3 cup ${documentsUploaded ? `pe-none disabled opacity-50` : ``} ${documentPan!== null ?  "pe-none  " : " "}`} onClick={(e) => handleCardClick(e, "panCard")}>
                                                                     {
                                                                         documentPan === null ?
                                                                             <div className="card-body d-flex align-items-center"  >
@@ -639,7 +635,7 @@ return (
                                                     <div className="container-fluid mt-4 mx-auto">
                                                         <div className="row mb-2">
 
-                                                            <div className="mb-3">
+                                                            <div className="mb-3 ">
                                                                 <PhoneInput
                                                                     id="floatingInput"
                                                                     specialLabel=""
@@ -651,7 +647,7 @@ return (
                                                                         handlePhoneInput(e, phone, "contactno")
                                                                     }
                                                                     value={`${countryCode}${inputField.contactNumber}`}
-
+                                                                    disabled={`${clickHereOnceLoading ? true : ""}`}
                                                                     inputProps={{
                                                                         alt: "mobileNumber",
                                                                         type: "tel",
@@ -662,10 +658,10 @@ return (
                                                             </div>
 
 
-                                                            <button type="button" className="btn btn-success w-25 mx-3" disabled={callNowClicked ? "disabled" : ""} onClick={handleCallNowClick}>Call now</button>
+                                                            <button type="button" className="btn btn-success w-25 mx-3" disabled={callNowClicked || clickHereOnceLoading ? "disabled" : ""} onClick={handleCallNowClick}>Call now</button>
                                                             <div className='d-flex align-items-center justify-content-between mt-3'>
                                                                 <div className='mb-0 pb-0'>
-                                                                    <a href='#' className={`me-4 ${clickHereOnceLoading || callNowClicked ? "opacity-50 pe-none" : clickHereOnceEnabled ? "" : "d-none"}`} onClick={afterCallConnectionResponse}>Click here once you disconnect the call to update information</a>
+                                                                    <a className={`me-4 cup ${clickHereOnceLoading || callNowClicked ? "opacity-50 pe-none" : clickHereOnceEnabled ? "" : "d-none"}`} onClick={afterCallConnectionResponse}>Click here once you disconnect the call to update information</a>
                                                                 </div>
                                                                 {
                                                                     clickHereOnceLoading ?
