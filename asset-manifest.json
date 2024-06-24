@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/digiform-ghpages/static/css/main.fdc930c2.css",
-    "main.js": "/digiform-ghpages/static/js/main.ed4d2f10.js",
+    "main.js": "/digiform-ghpages/static/js/main.afe85039.js",
     "static/js/453.7bf7ff73.chunk.js": "/digiform-ghpages/static/js/453.7bf7ff73.chunk.js",
     "index.html": "/digiform-ghpages/index.html",
     "main.fdc930c2.css.map": "/digiform-ghpages/static/css/main.fdc930c2.css.map",
-    "main.ed4d2f10.js.map": "/digiform-ghpages/static/js/main.ed4d2f10.js.map",
+    "main.afe85039.js.map": "/digiform-ghpages/static/js/main.afe85039.js.map",
     "453.7bf7ff73.chunk.js.map": "/digiform-ghpages/static/js/453.7bf7ff73.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fdc930c2.css",
-    "static/js/main.ed4d2f10.js"
+    "static/js/main.afe85039.js"
   ]
 }
