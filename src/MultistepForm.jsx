@@ -13,6 +13,7 @@ import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
 import CommonContext from './CommonContext';
 import { useNavigate } from 'react-router-dom';
+import { PDFTextField, PDFCheckBox, PDFDropdown, PDFRadioGroup } from 'pdf-lib';
 
 
 
@@ -319,30 +320,58 @@ const fillPdfFields = async (pdfBytes, fieldData) => {
     const pdfDoc = await PDFDocument.load(pdfBytes);
     const form = pdfDoc.getForm();
 
+    // fieldData.forEach((data) => {
+    //     const field = form.getField(data.name);
+    //     if (field) {
+    //         try {
+    //             switch (field.constructor.name) {
+    //                 case "PDFTextField":
+    //                     field.setText(data.value);
+    //                     break;
+    //                 case "PDFCheckBox":
+    //                     if (data.value === true) {
+    //                         field.check();
+    //                     } else {
+    //                         field.uncheck();
+    //                     }
+    //                     break;
+    //                 case "PDFDropdown":
+    //                     field.select(data.value);
+    //                     break;
+    //                 case "PDFRadioGroup":
+    //                     field.select(data.value);
+    //                     break;
+    //                 default:
+    //                     console.log(`Unsupported field type: ${field.constructor.name}`);
+    //                     break;
+    //             }
+    //         } catch (error) {
+    //             console.error(
+    //                 `Error setting field ${data.name} with value ${data.value}: ${error.message}`
+    //             );
+    //         }
+    //     }
+    // });
+
     fieldData.forEach((data) => {
         const field = form.getField(data.name);
         if (field) {
             try {
-                switch (field.constructor.name) {
-                    case "PDFTextField":
-                        field.setText(data.value);
-                        break;
-                    case "PDFCheckBox":
-                        if (data.value === true) {
-                            field.check();
-                        } else {
-                            field.uncheck();
-                        }
-                        break;
-                    case "PDFDropdown":
-                        field.select(data.value);
-                        break;
-                    case "PDFRadioGroup":
-                        field.select(data.value);
-                        break;
-                    default:
-                        console.log(`Unsupported field type: ${field.constructor.name}`);
-                        break;
+                console.log(field.constructor.name)
+                if (field instanceof PDFTextField) {
+                    field.setText(data.value);
+                } else if (field instanceof PDFCheckBox) {
+                    if (data.value === true) {
+                        field.check();
+                    } else {
+                        field.uncheck();
+                    }
+                } else if (field instanceof PDFDropdown) {
+                    field.select(data.value);
+                } else if (field instanceof PDFRadioGroup) {
+                    field.select(data.value);
+                } else {
+                    console.log(`Unsupported field type: ${field.constructor.name}`);
                 }
             } catch (error) {
                 console.error(
