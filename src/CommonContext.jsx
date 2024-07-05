@@ -323,6 +323,11 @@ export const DataProvider = ({children}) => {
         }
     ])
 
+    // Crop Image States
+
+    const [uploadFileType, setUploadFileType] = useState(false)
+
+
     const [pdfFilePath,setPdfFilePath ] = useState(localStorage.getItem("currentPdf"))
     const [outputPdf, setOutputPdf] = useState(null);
 
@@ -335,7 +340,12 @@ export const DataProvider = ({children}) => {
                     pdfFilePath,
                     setPdfFilePath,
                     outputPdf,
-                    setOutputPdf
+                    setOutputPdf,
+
+                    // Crop Image
+
+                    uploadFileType,
+                    setUploadFileType
                       }}
                       >
             {children}

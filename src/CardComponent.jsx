@@ -1259,7 +1259,7 @@ const CardComponent = () => {
         }
         try {
 
-            const result = await axios.post('https://digiform.adraproductstudio.com/select_file', params, {
+            const result = await axios.post('https://digiformapi.adraproductstudio.com:5000/select_file', params, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
