@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/digiform-ghpages/static/css/main.a82e5b65.css",
-    "main.js": "/digiform-ghpages/static/js/main.6ccc1380.js",
+    "main.css": "/digiform-ghpages/static/css/main.87e5827b.css",
+    "main.js": "/digiform-ghpages/static/js/main.f045db3e.js",
     "static/js/239.1b1b0c4e.chunk.js": "/digiform-ghpages/static/js/239.1b1b0c4e.chunk.js",
     "static/js/213.ebd4f166.chunk.js": "/digiform-ghpages/static/js/213.ebd4f166.chunk.js",
     "static/js/455.1178e57d.chunk.js": "/digiform-ghpages/static/js/455.1178e57d.chunk.js",
     "static/js/453.0c2ed5ae.chunk.js": "/digiform-ghpages/static/js/453.0c2ed5ae.chunk.js",
     "index.html": "/digiform-ghpages/index.html",
-    "main.a82e5b65.css.map": "/digiform-ghpages/static/css/main.a82e5b65.css.map",
-    "main.6ccc1380.js.map": "/digiform-ghpages/static/js/main.6ccc1380.js.map",
+    "main.87e5827b.css.map": "/digiform-ghpages/static/css/main.87e5827b.css.map",
+    "main.f045db3e.js.map": "/digiform-ghpages/static/js/main.f045db3e.js.map",
     "239.1b1b0c4e.chunk.js.map": "/digiform-ghpages/static/js/239.1b1b0c4e.chunk.js.map",
     "213.ebd4f166.chunk.js.map": "/digiform-ghpages/static/js/213.ebd4f166.chunk.js.map",
     "455.1178e57d.chunk.js.map": "/digiform-ghpages/static/js/455.1178e57d.chunk.js.map",
     "453.0c2ed5ae.chunk.js.map": "/digiform-ghpages/static/js/453.0c2ed5ae.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a82e5b65.css",
-    "static/js/main.6ccc1380.js"
+    "static/css/main.87e5827b.css",
+    "static/js/main.f045db3e.js"
   ]
 }
