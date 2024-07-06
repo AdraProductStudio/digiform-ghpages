@@ -224,6 +224,7 @@ input[type=number] {
 
   .cursorPointer{
     cursor: pointer;
+    margin-right: 2rem;
   }
   .message{
     position: absolute;
