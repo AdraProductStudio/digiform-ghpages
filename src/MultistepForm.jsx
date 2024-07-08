@@ -752,7 +752,7 @@ const MultistepForm = () => {
                                                             <div className="container-fluid mt-4 mx-auto">
                                                                 <div className="row mb-2">
                                                                     <div className="col-lg-6 my-3">
-                                                                        <div className={`card h-100 border-0 shadow rounded-3 py-3 cup ${documentsUploaded === true ? `pe-none disabled opacity-50` : ``} ${documentAadhar !== null ? "pe-none " : " "}`} onClick={(e) => handleCardClick(e, "aadhaarCard")}>
+                                                                        <div className={`card h-100 border-0 shadow rounded-3 py-3 cup messageRelative ${documentsUploaded === true ? `pe-none disabled opacity-50` : ``} ${documentAadhar !== null ? "pe-none " : " "}`} onClick={(e) => handleCardClick(e, "aadhaarCard")}>
                                                                             {
                                                                                 documentAadhar === null ?
                                                                                     <div className="card-body d-flex align-items-center"  >
@@ -761,7 +761,7 @@ const MultistepForm = () => {
                                                                                         <input type="file" hidden id='aadhaarCard' name='aadhaarCard' onChange={(e) => handleAadhaarCardUpload(e)} />
                                                                                     </div>
                                                                                     :
-                                                                                    <div className={`card-body d-flex align-items-center position-relative`} >
+                                                                                    <div className={`card-body d-flex align-items-center`} >
 
                                                                                         {
                                                                                             uploading ?
@@ -774,13 +774,13 @@ const MultistepForm = () => {
                                                                                                 <p className='mb-0 mx-3'><BsFiletypePdf className='fs-3 text-danger' /></p>
                                                                                         }
                                                                                         <p className='mb-0' >Aadhaar card</p>
-                                                                                        <span class="badge text-bg-success message">Uploaded</span>
+                                                                                        <span className="badge text-bg-success message">Uploaded</span>
                                                                                     </div>
                                                                             }
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-lg-6 my-3">
-                                                                        <div className={`card h-100 border-0 shadow rounded-3 py-3 cup ${documentsUploaded ? `pe-none disabled opacity-50` : ``} ${documentPan !== null ? "pe-none  " : " "}`} onClick={(e) => handleCardClick(e, "panCard")}>
+                                                                        <div className={`card h-100 border-0 shadow rounded-3 py-3 cup messageRelative ${documentsUploaded ? `pe-none disabled opacity-50` : ``} ${documentPan !== null ? "pe-none  " : " "}`} onClick={(e) => handleCardClick(e, "panCard")}>
                                                                             {
                                                                                 documentPan === null ?
                                                                                     <div className="card-body d-flex align-items-center"  >
@@ -789,11 +789,11 @@ const MultistepForm = () => {
                                                                                         <input type="file" hidden id='panCard' onChange={(e) => handlePanCardUpload(e)} />
                                                                                     </div>
                                                                                     :
-                                                                                    <div className="card-body d-flex align-items-center position-relative"  >
+                                                                                    <div className="card-body d-flex align-items-center  bg-red"  >
 
                                                                                         {
                                                                                             uploading ?
-                                                                                                <div className="d-flex justify-content-center">
+                                                                                                <div className="d-flex justify-content-center ">
                                                                                                     <div className="spinner-border text-warning me-4 " role="status">
                                                                                                         <span className="visually-hidden">Loading...</span>
                                                                                                     </div>
@@ -803,7 +803,7 @@ const MultistepForm = () => {
 
                                                                                         }
                                                                                         <p className='mb-0'>Pan card</p>
-                                                                                       { <span class="badge text-bg-success message">Uploaded</span>}
+                                                                                       { <span className="badge text-bg-success message">Uploaded</span>}
                                                                                     </div>
                                                                             }
                                                                         </div>

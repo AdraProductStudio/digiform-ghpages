@@ -226,8 +226,13 @@ input[type=number] {
     cursor: pointer;
     margin-right: 2rem;
   }
+
+  .messageRelative{
+    position: relative;
+  }
+
   .message{
     position: absolute;
-    bottom: 3.4rem;
-    left: 10.8rem;
+    top: 0;
+    right: 0;
   }

@@ -1258,7 +1258,7 @@ const CardComponent = () => {
             filename: onClickParams2
         }
         try {
-
+            console.log(params)
             const result = await axios.post('https://digiformapi.adraproductstudio.com:5000/select_file', params, {
                 headers: {
                     'Content-Type': 'application/json',
