@@ -413,7 +413,7 @@ const MultistepForm = () => {
         }
 
         try {
-            await axios.post('https://digiformtelephony.adraproductstudio.com:3000/outbound_call', requiredParams)
+            await axios.post('https://digiformapi.adraproductstudio.com:3000/outbound_call', requiredParams)
                 .then((response) => {
                     if (response.data.error_code === 0) {
                         toast.success(response.data.message)
@@ -442,7 +442,7 @@ const MultistepForm = () => {
             final_json: JSON.stringify(responseData)
         }
         try {
-            await axios.post('https://digiformtelephony.adraproductstudio.com:3000/complete_application', requiredParams)
+            await axios.post('https://digiformapi.adraproductstudio.com:3000/complete_application', requiredParams)
                 .then((response) => {
                     if (response.data.error_code === 0) {
                         console.log(response)
